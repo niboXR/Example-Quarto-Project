@@ -1,0 +1,178 @@
+---
+title: "Example Quarto Paper"
+params:
+  report_date: !expr Sys.Date()
+subtitle: "DRAFT last revised on `r params$report_date`"
+bibliography: references.bib
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: darkly
+    toc: true
+    toc-location: left 
+    toc-title: "Contents" # Optional: Custom TOC titl
+    self-contained: true        # All assets inline (shareable HTML)
+    code-tools: true            # Global code toggle
+    code-fold: true             # Allow folding
+    code-fold-default: false    # Hide code by default
+    code-summary: "Show Code"   # Optional button label
+  pdf:
+    echo: false
+    toc: true
+  docx:
+    echo: false
+    toc: true
+---
+
+**THIS PAPER IS AN EXAMPLE WRITTEN BY AI AND DOES NOT CONTAIN REAL ANALYSES. THE PURPOSE IS TO DEMONSTRATE THE CAPABILITIES OF QUARTO**
+
+# Abstract
+
+**Background:** On January 8, 2024, the University of Michigan won its first College Football Playoff (CFP) National Championship since 1997 [@smith2020]. Given the cultural importance of collegiate athletics in the U.S., particularly football at major public institutions, it is worth evaluating whether such a historic win had any measurable impact on campus employee productivity[^1].
+
+[^1]: This is the footnote.
+
+**Hypothesis:** The victory led to a temporary increase in employee morale, resulting in a measurable short-term increase in productivity among university staff.
+
+**Methods:** We analyzed anonymized productivity metrics (e.g., email response time, meeting frequency, and project submissions) for a random sample of administrative staff, faculty, and researchers at the University of Michigan. Data was gathered for two months before and after the championship date.
+
+**Results:** A 9% average increase in productivity metrics was observed during the three-week period following the championship. However, the effect appeared to taper off by the sixth week.
+
+**Conclusion:** Short-term morale boosts associated with major athletic wins can positively impact employee productivity at public institutions. However, this effect is not sustained long-term without institutional strategies to maintain engagement.
+
+# Background
+
+College football is a deeply embedded cultural phenomenon in the U.S., and university victories in high-profile competitions can lead to emotional and psychological boosts for the institution's community. Such events often result in elevated campus pride and morale. Prior studies have noted correlations between sports success and alumni donations, but little attention has been given to faculty and staff productivity.
+
+# Hypothesis
+
+We hypothesize that the University of Michigan’s 2024 FBS national championship had a positive short-term impact on employee productivity, particularly in administrative and academic units, due to increased morale.
+
+# Methods
+
+We collected productivity-related data from internal university IT systems for 600 randomly selected employees between November 1, 2023, and March 1, 2024. Key metrics included:
+
+-   Email response time (in hours)
+
+-   Number of scheduled internal meetings per week
+
+-   Rate of submitted project deliverables (as % on-time)
+
+We used R and Quarto to clean, visualize, and summarize the data.
+
+```{r}
+suppressWarnings(suppressMessages(library(tidyverse)))
+library(lubridate)
+library(ggplot2)
+suppressWarnings(library(gt))
+set.seed(2024)
+
+data <- tibble(
+  date = seq.Date(from = as.Date("2023-11-01"), to = as.Date("2024-03-01"), by = "day"),
+  week = lubridate::isoweek(date),
+  post_championship = ifelse(date >= as.Date("2024-01-08"), "Post", "Pre"),
+  email_response_time = rnorm(length(date), mean = ifelse(date < as.Date("2024-01-08"), 6.2, 5.6), sd = 1.1),
+  meetings_per_week = round(rnorm(length(date), mean = ifelse(date < as.Date("2024-01-08"), 4.9, 5.6), sd = 0.8)),
+  deliverable_rate = round(rnorm(length(date), mean = ifelse(date < as.Date("2024-01-08"), 82, 89), sd = 6))
+)
+```
+
+# Results
+
+## Email Response Time
+
+Figure 1 shows that average daily email response time decreased following the national championship. In the pre-championship period, the average response time was approximately **6.2 hours**, compared to **5.6 hours** post-championship — representing a **9.7% improvement** in response efficiency.
+
+
+**Figure 1. Daily Email Response Time**
+```{r}
+ggplot(data, aes(x = date, y = email_response_time)) +
+  geom_line(aes(color = date >= as.Date("2024-01-08")), linewidth = 1) +
+  geom_vline(xintercept = as.Date("2024-01-08"), linetype = "dashed", color = "black") +
+  scale_color_manual(
+    values = c("FALSE" = "#00274c", "TRUE" = "#1f78b4"),
+    labels = c("Pre-Championship", "Post-Championship"),
+    name = "Period"
+  ) +
+  labs(
+    title = "",
+    x = "Date",
+    y = "Avg. Response Time (hrs)"
+  ) +
+  theme_minimal()
+
+```
+
+## Meeting Frequency
+
+Figure 2 shows that internal meeting frequency increased modestly in the post-championship period. The weekly average rose from 4.9 meetings per employee to 5.6 meetings, suggesting a brief rise in team coordination and communication activities.
+
+
+**Figure 2. Change in Weekly Internal Meetings per Employee**
+```{r}
+library(ggplot2)
+
+# Create data frame
+meetings_data <- data.frame(
+  Period = factor(c("Pre-Championship", "Post-Championship"), levels = c("Pre-Championship", "Post-Championship")),
+  AvgMeetings = c(4.9, 5.6)
+)
+
+# Create plot
+ggplot(meetings_data, aes(x = Period, y = AvgMeetings, fill = Period)) +
+  geom_bar(stat = "identity", width = 0.6, color = "black") +
+  scale_fill_manual(values = c("#00274C", "#1f77b4")) +
+  labs(
+    title = "",
+    y = "Average Weekly Meetings",
+    x = NULL
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none", 
+        plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 12),
+        axis.title.y = element_text(size = 12))
+
+
+
+```
+
+## Project Deliverables
+
+Table 1 shows that timely project submission rates also improved. The on-time delivery rate rose from an average of 82% before the championship to 89% afterward, peaking at 91% during the third post-championship week.
+
+
+**Table 1. Productivity Metrics Before and After Championship**
+```{r}
+library(knitr)
+
+summary_table <- data %>%
+  group_by(post_championship) %>%
+  summarize(
+    Avg_Email_Response = round(mean(email_response_time), 2),
+    Avg_Meetings = round(mean(meetings_per_week), 2),
+    Avg_Deliverable_Rate = round(mean(deliverable_rate), 2)
+  )
+
+kable(summary_table)
+```
+
+
+# Discussion
+
+The findings of this study suggest that major collegiate athletic victories, such as Michigan’s 2024 FBS National Championship, can have a measurable short-term impact on employee productivity in a university setting. The observed trends across multiple metrics—reduced email response times, increased meeting engagement, and higher project deliverable rates—indicate a possible morale boost following the championship event.
+
+These results align with broader literature on organizational behavior, where emotional contagion and collective identity are known to influence workplace performance. In this context, the win may have acted as a unifying moment, enhancing campus spirit and temporarily increasing motivation and engagement across departments.
+
+However, this effect appeared to diminish by the fourth to sixth week post-victory, suggesting that while celebratory events can serve as effective morale boosters, they do not generate sustained productivity improvements in the absence of longer-term engagement strategies. This raises important questions for institutional leadership about how to harness such moments and translate them into enduring organizational benefits.
+
+Moreover, this study has several limitations. First, while the sample included diverse employee types, it did not capture differences between roles (e.g., faculty vs. administrative staff) in detail. Second, productivity was measured using proxy indicators (e.g., email responsiveness), which may not fully capture qualitative aspects of work. Third, there may be external confounding factors—such as the start of the winter semester or New Year motivation—that contributed to post-championship productivity changes.
+
+Future research should explore whether similar effects occur following other major university milestones (e.g., major grants, rankings, or campus-wide events), and whether interventions can extend the positive psychological momentum of such events into lasting performance gains.
+
+# Conclusion
+
+This study found evidence supporting the hypothesis that Michigan’s national championship positively affected employee productivity in the short term. The peak improvement occurred during the three weeks following the win. While such morale-driven boosts are beneficial, institutions should consider how to maintain elevated engagement over longer periods through structured initiatives and recognition programs.
+
+# References
