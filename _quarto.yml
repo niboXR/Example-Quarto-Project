@@ -1,4 +1,4 @@
 project:
-  output-dir: "output"
+  output-dir: "docs"
   type: default
     
