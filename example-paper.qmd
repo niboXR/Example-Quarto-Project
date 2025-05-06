@@ -1,19 +1,23 @@
 ---
 title: "Example Quarto Paper"
-params:
-  report_date: !expr Sys.Date()
 subtitle: "DRAFT last revised on `r params$report_date`"
+author: ChatGPT'
+#date: ""
+params:
+  report_date: !expr format(Sys.Date(), "%B %d, %Y")
 bibliography: references.bib
 format:
   html:
-    theme: 
-      light: cosmo
-      dark: darkly
+    css: custom.css
+    include-after-body: giscus.html
+    # theme: 
+    #   light: cosmo
+    #   dark: darkly
     toc: true
     toc-location: left 
     toc-title: "Contents" # Optional: Custom TOC titl
     self-contained: true        # All assets inline (shareable HTML)
-    code-tools: true            # Global code toggle
+    code-tools: true          # Global code toggle
     code-fold: true             # Allow folding
     code-fold-default: false    # Hide code by default
     code-summary: "Show Code"   # Optional button label

@@ -1,0 +1,11 @@
+/* Position the theme toggle inside the TOC sidebar */
+#quarto-sidebar-toc-left {
+  position: relative; /* Establishes a positioning context */
+}
+
+.quarto-color-scheme-toggle {
+  position: absolute;
+  top: 1.5em;     /* Fine-tune as needed */
+  left: 0.5em;    /* Fine-tune as needed */
+  z-index: 1000;  /* Keep it on top */
+}
