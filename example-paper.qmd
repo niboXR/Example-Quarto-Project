@@ -1,10 +1,9 @@
 ---
 title: "Example Quarto Paper"
-subtitle: "DRAFT last revised on `r params$report_date`"
-author: ChatGPT'
-#date: ""
-params:
-  report_date: !expr format(Sys.Date(), "%B %d, %Y")
+subtitle: "DRAFT"
+author: ChatGPT
+date: 05.03.2025
+date-modified: today
 bibliography: references.bib
 format:
   html:
