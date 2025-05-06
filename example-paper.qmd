@@ -9,7 +9,7 @@ bibliography: references.bib
 format:
   html:
     css: custom.css
-    include-after-body: custom.js
+    include-after-body: giscus.html
     # theme: 
     #   light: cosmo
     #   dark: darkly
