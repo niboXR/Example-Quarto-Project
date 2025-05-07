@@ -15,18 +15,20 @@ format:
     toc: true
   html:
     other-links:
-      - text: View the Github repo
-        href: https://github.com/niboXR/Example-Quarto-Project
-        icon: database
-      - text: View the Github project
-        href: https://github.com/users/niboXR/projects/1
-        icon: kanban
+      - icon: diagram-3
+        text: Collaborative workflow details
+        href: analysis-workflow.html
       - text: Collaborate on Google Drive
         href: https://docs.google.com/document/d/1sPJ6GjdtCjLoqtGw1JgjQRHESANGjYPF/edit?usp=drive_link&ouid=104376439172390787227&rtpof=true&sd=true
         icon: cloud
-      - icon: diagram-3
-        text: See the workflow
-        href: analysis-workflow.html
+      - text: Project tasks and timeline
+        href: https://github.com/users/niboXR/projects/1
+        icon: kanban
+      - text: View on Github
+        href: https://github.com/niboXR/Example-Quarto-Project
+        icon: github
+
+
 
     # comments: 
     #   giscus: 
