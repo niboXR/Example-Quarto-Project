@@ -15,10 +15,13 @@ format:
     toc: true
   html:
     other-links:
-      - text: View on Github
+      - text: View the Github repo
         href: https://github.com/niboXR/Example-Quarto-Project
-        icon: github
-      - text: Collaborate on Drive
+        icon: database
+      - text: View the Github project
+        href: https://github.com/users/niboXR/projects/1
+        icon: kanban
+      - text: Collaborate on Google Drive
         href: https://docs.google.com/document/d/1sPJ6GjdtCjLoqtGw1JgjQRHESANGjYPF/edit?usp=drive_link&ouid=104376439172390787227&rtpof=true&sd=true
         icon: cloud
       - icon: diagram-3
