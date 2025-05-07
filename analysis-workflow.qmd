@@ -1,13 +1,16 @@
 ---
 title: "My collaborative analysis workflow"
+subtitle: "Static reports"
 format: 
   html:
     self-contained: true
 ---
 
-Graph 1 illustrates my proposed collaborative workflow that aims to meet the needs of teams of people with varied collaboration preferences and styles, while simultaneously elevating the quality and impact of the reports that I am responsible.
+Graph 1 illustrates my collaborative workflow that aims to meet the needs of teams of people with varied collaboration preferences and styles, while simultaneously elevating the quality and impact of the static[^1] reports that I am responsible.
 
-**Graph 1. Collaborating on high-quality data projects**
+[^1]: Static documents are used for traditional reports and papers published in print or online for the purpose of being read. Static reports differ from interactive reports, which emphasize the type of user input commonly found in dashboards and data tools.
+
+**Graph 1. Collaborative workflow for data projects**
 ```{mermaid}
 flowchart TD
     A[External ETL tool*] -.-> |external data prep as required| B[Quarto]
@@ -21,7 +24,7 @@ flowchart TD
     C3 --> |for collaborators| D3[Teams or Drive]
     D1 --> |get feedback| F
     D2 -.-> E1[Github Pages*]
-    E1 -.-> |utilize Github features| F[Revise]
+    E1 -.-> |utilize Github pm features| F[Revise]
     D3 --> |track changes| F
     F --> G[Publish]
 ```
