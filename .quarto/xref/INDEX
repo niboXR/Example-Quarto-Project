@@ -6,5 +6,11 @@
     "example-paper.html": "18aff31d",
     "example-paper.tex": "93e6d83d",
     "example-paper.docx": "455dd5ea"
+  },
+  "code/analysis-workflow.qmd": {
+    "analysis-workflow.html": "d997b729"
+  },
+  "analysis-workflow.qmd": {
+    "analysis-workflow.html": "2b948dd7"
   }
 }

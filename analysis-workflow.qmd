@@ -1,0 +1,31 @@
+---
+title: "My collaborative analysis workflow"
+format: 
+  html:
+    self-contained: true
+---
+
+Graph 1 illustrates my proposed collaborative workflow that aims to meet the needs of teams of people with varied collaboration preferences and styles, while simultaneously elevating the quality and impact of the reports that I am responsible.
+
+**Graph 1. Collaborating on high-quality data projects**
+```{mermaid}
+flowchart TD
+    A[External ETL tool*] -.-> |external data prep as required| B[Quarto]
+    B --> C1[PDF]
+    B --> |R renders a .QMD to various formats| C2[HTML]
+    B --> C3[DOCX]
+    C1 --> |for early reviewers and readers| D1[Email distribution]
+    C1 --> D2[GitHub]
+    C2 --> |for technical collaborators| D2
+    C3 --> D2
+    C3 --> |for collaborators| D3[Teams or Drive]
+    D1 --> |get feedback| F
+    D2 -.-> E1[Github Pages*]
+    E1 -.-> |utilize Github features| F[Revise]
+    D3 --> |track changes| F
+    F --> G[Publish]
+```
+
+\**External data prep* is sometimes required or utilized for reasons such as data security requirements, computational ability, and existing institutional knowledge. My goal is to share as much of my code as possible.
+
+\**Github Pages* can not always be supported due to project requirements. When supported, a project page acts as a hub to access the full project. It also better meets the needs of collaborators who prefer the web. Here is an [example project page](example-paper.html).

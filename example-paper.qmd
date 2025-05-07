@@ -3,12 +3,33 @@ title: "Example Quarto Paper"
 subtitle: "DRAFT"
 author: ChatGPT
 date: 05.03.2025
-date-modified: today
+#date: today #get's today's date
+date-modified: last-modified
 bibliography: references.bib
 format:
+  pdf:
+    echo: false
+    toc: true
+  docx:
+    echo: false
+    toc: true
   html:
+    other-links:
+      - text: View on Github
+        href: https://github.com/niboXR/Example-Quarto-Project
+        icon: github
+      - text: Collaborate on Drive
+        href: https://docs.google.com/document/d/1sPJ6GjdtCjLoqtGw1JgjQRHESANGjYPF/edit?usp=drive_link&ouid=104376439172390787227&rtpof=true&sd=true
+        icon: cloud
+      - icon: diagram-3
+        text: See the workflow
+        href: analysis-workflow.html
+
+    # comments: 
+    #   giscus: 
+    #     repo: niboxr/Example-Quarto-Project
     css: custom.css
-    include-after-body: giscus.html
+#    include-after-body: giscus.html
     # theme: 
     #   light: cosmo
     #   dark: darkly
@@ -20,12 +41,6 @@ format:
     code-fold: true             # Allow folding
     code-fold-default: false    # Hide code by default
     code-summary: "Show Code"   # Optional button label
-  pdf:
-    echo: false
-    toc: true
-  docx:
-    echo: false
-    toc: true
 ---
 
 **THIS PAPER IS AN EXAMPLE WRITTEN BY AI AND DOES NOT CONTAIN REAL ANALYSES. THE PURPOSE IS TO DEMONSTRATE THE CAPABILITIES OF QUARTO**
