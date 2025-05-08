@@ -12,5 +12,8 @@
   },
   "analysis-workflow.qmd": {
     "analysis-workflow.html": "2b948dd7"
+  },
+  "interactive-analysis-workflow.qmd": {
+    "interactive-analysis-workflow.html": "1c5520fa"
   }
 }

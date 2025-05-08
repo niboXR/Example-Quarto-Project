@@ -1,0 +1,27 @@
+---
+title: "The collaborative workflow"
+subtitle: "Interactive projects"
+format: 
+  html:
+    self-contained: true
+---
+
+Graph 1 illustrates my collaborative workflow for interactive[^1] data projects that aims to meet the needs of teams of users and technical collaborators in order to elevate the quality and impact of final outputs.
+
+[^1]: Interactive projects emphasize real-time user input and dynamic changes such as what is commonly found in dashboards and data tools. Interactive products differ from static ones, which are used for traditional reports and papers published in print or online for the purpose of being read rather than interacted. See how the static workflow differs [here](analysis-workflow.html).
+
+**Graph 1. Collaborative workflow for interactive data projects**
+```{mermaid}
+flowchart TD
+    A[External ETL tool] -.-> |external data prep as required| B[Tableau or R Shiny]
+    B --> |for users| C1[Tableau or Shiny Server]
+    B --> |for collaborators| C2[Github]
+    C1 --> |Link to Github Projects*| D[Revise]
+    C2 --> |Github Projects*| D
+    D --> E[Publish]
+
+```
+
+\**Github Pages* can not always be supported due to project requirements. When supported, a project page acts as a hub to access the full project. It also better meets the needs of collaborators who prefer the web. Here is an [example project page](example-paper.html).
+
+\**Github Projects* is a flexible project management solution with support for spreadsheets, taskboards, and timelines.

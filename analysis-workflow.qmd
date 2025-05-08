@@ -1,19 +1,19 @@
 ---
-title: "My collaborative analysis workflow"
-subtitle: "Static reports"
+title: "The collaborative workflow"
+subtitle: "Static projects"
 format: 
   html:
     self-contained: true
 ---
 
-Graph 1 illustrates my collaborative workflow that aims to meet the needs of teams of people with varied collaboration preferences and styles, while simultaneously elevating the quality and impact of the static[^1] reports that I am responsible.
+Graph 1 illustrates my collaborative workflow for static[^1] data projects that aims to meet the needs of teams of people with varied collaboration preferences and styles in order to elevate the quality and impact of final outputs.
 
-[^1]: Static documents are used for traditional reports and papers published in print or online for the purpose of being read. Static reports differ from interactive reports, which emphasize the type of user input commonly found in dashboards and data tools.
+[^1]: Static documents are used for traditional reports and papers published in print or online for the purpose of being read. Static reports differ from interactive reports, which emphasize the type of user input commonly found in dashboards and data tools. See how the interactive workflow differs [here](interactive-analysis-workflow.html).
 
-**Graph 1. Collaborative workflow for data projects**
+**Graph 1. Collaborative workflow for static data projects**
 ```{mermaid}
 flowchart TD
-    A[External ETL tool*] -.-> |external data prep as required| B[Quarto]
+    A[External ETL tool] -.-> |external data prep as required| B[Quarto]
     B --> C1[PDF]
     B --> |R renders a .QMD to various formats| C2[HTML]
     B --> C3[DOCX]
@@ -24,11 +24,11 @@ flowchart TD
     C3 --> |for collaborators| D3[Teams or Drive]
     D1 --> |get feedback| F
     D2 -.-> E1[Github Pages*]
-    E1 -.-> |utilize Github pm features| F[Revise]
+    E1 -.-> |Github Projects*| F[Revise]
     D3 --> |track changes| F
     F --> G[Publish]
 ```
 
-\**External data prep* is sometimes required or utilized for reasons such as data security requirements, computational ability, and existing institutional knowledge. My goal is to share as much of my code as possible.
-
 \**Github Pages* can not always be supported due to project requirements. When supported, a project page acts as a hub to access the full project. It also better meets the needs of collaborators who prefer the web. Here is an [example project page](example-paper.html).
+
+\**Github Projects* is a flexible project management solution with support for spreadsheets, taskboards, and timelines.

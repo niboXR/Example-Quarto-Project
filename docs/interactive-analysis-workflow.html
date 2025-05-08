@@ -4963,7 +4963,7 @@ z-index: 1000;
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">The collaborative workflow</h1>
-<p class="subtitle lead">Static projects</p>
+<p class="subtitle lead">Interactive projects</p>
 </div>
 
 
@@ -4980,28 +4980,21 @@ z-index: 1000;
 </header>
 
 
-<p>Graph 1 illustrates my collaborative workflow for static<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> data projects that aims to meet the needs of teams of people with varied collaboration preferences and styles in order to elevate the quality and impact of final outputs.</p>
-<p><strong>Graph 1. Collaborative workflow for static data projects</strong></p>
+<p>Graph 1 illustrates my collaborative workflow for interactive<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> data projects that aims to meet the needs of teams of users and technical collaborators in order to elevate the quality and impact of final outputs.</p>
+<p><strong>Graph 1. Collaborative workflow for interactive data projects</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
-    A[External ETL tool] -.-&gt; |external data prep as required| B[Quarto]
-    B --&gt; C1[PDF]
-    B --&gt; |R renders a .QMD to various formats| C2[HTML]
-    B --&gt; C3[DOCX]
-    C1 --&gt; |for early reviewers and readers| D1[Email distribution]
-    C1 --&gt; D2[GitHub]
-    C2 --&gt; |for technical collaborators| D2
-    C3 --&gt; D2
-    C3 --&gt; |for collaborators| D3[Teams or Drive]
-    D1 --&gt; |get feedback| F
-    D2 -.-&gt; E1[Github Pages*]
-    E1 -.-&gt; |Github Projects*| F[Revise]
-    D3 --&gt; |track changes| F
-    F --&gt; G[Publish]
+    A[External ETL tool] -.-&gt; |external data prep as required| B[Tableau or R Shiny]
+    B --&gt; |for users| C1[Tableau or Shiny Server]
+    B --&gt; |for collaborators| C2[Github]
+    C1 --&gt; |Link to Github Projects*| D[Revise]
+    C2 --&gt; |Github Projects*| D
+    D --&gt; E[Publish]
+
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -5015,7 +5008,7 @@ z-index: 1000;
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Static documents are used for traditional reports and papers published in print or online for the purpose of being read. Static reports differ from interactive reports, which emphasize the type of user input commonly found in dashboards and data tools. See how the interactive workflow differs <a href="interactive-analysis-workflow.html">here</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Interactive projects emphasize real-time user input and dynamic changes such as what is commonly found in dashboards and data tools. Interactive products differ from static ones, which are used for traditional reports and papers published in print or online for the purpose of being read rather than interacted. See how the static workflow differs <a href="analysis-workflow.html">here</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->
